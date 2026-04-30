@@ -37,6 +37,8 @@
     pulse.enable = true;
   };
 
+  virtualisation.docker.enable = true;
+
   # Nix settings
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

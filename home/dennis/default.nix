@@ -10,7 +10,7 @@
 
   programs.git = {
     enable = true;
-    extraConfig = {
+    settings = {
       user.name = "DenSinH";
       user.email = "git@dennishilhorst.nl";
       init.defaultBranch = "main";
@@ -34,11 +34,14 @@
     };
   };
 
-  # CLI tools (move from systemPackages)
+  # CLI tools
   home.packages = with pkgs; [
     wget
     nano
     nixfmt
+    jetbrains.pycharm
+    python313
+    uv
   ];
 
   home.stateVersion = "25.11";

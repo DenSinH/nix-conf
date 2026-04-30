@@ -32,6 +32,7 @@
             ./modules/common
             ./modules/desktop/gnome.nix
             ./modules/laptop/input.nix
+            ./modules/features/gaming.nix
           ];
         };
       };

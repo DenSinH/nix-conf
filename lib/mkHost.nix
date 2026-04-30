@@ -11,9 +11,11 @@ nixpkgs.lib.nixosSystem {
     inherit inputs;
   };
 
-  modules = [
-    ../modules/common
-    ({ networking.hostName = hostname; })
-  ] ++ extraModules;
+  modules = 
+    [
+      ../modules/common
+      ({ networking.hostName = hostname; })
+    ] 
+    ++ extraModules;
 }
 
