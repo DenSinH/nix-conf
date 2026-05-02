@@ -63,5 +63,17 @@
     uv
   ];
 
+  dconf.settings = {
+    "org/gnome/shell" = {
+      # Dash menu settings
+      favorite-apps = [
+        "firefox.desktop"
+        "org.gnome.Nautilus.desktop"
+        "code.desktop"
+        "org.gnome.Terminal.desktop"
+      ];
+    };
+  };
+
   home.stateVersion = "25.11";
 }
