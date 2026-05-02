@@ -46,5 +46,10 @@
     "flakes"
   ];
 
+  # Default packages
+  environment.systemPackages = with pkgs; [
+    htop
+  ];
+
   system.stateVersion = "25.11";
 }
