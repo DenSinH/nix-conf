@@ -26,23 +26,26 @@
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
+      lib = pkgs.lib;
       mkHost = import ./lib/mkHost.nix {
         inherit nixpkgs system inputs;
       };
+
+      hostDir = ./hosts;
+
+      hostNames = builtins.attrNames (builtins.readDir hostDir);
+
+      hostConfigs = lib.filter (name: builtins.pathExists (hostDir + "/${name}/default.nix")) hostNames;
     in
     {
-      nixosConfigurations = {
-        sticker-laptop = mkHost {
-          hostname = "sticker-laptop";
-          extraModules = [
-            ./hosts/sticker-laptop
-            ./modules/common
-            ./modules/desktop/gnome.nix
-            ./modules/laptop/input.nix
-            ./modules/features/gaming.nix
-          ];
-        };
-      };
+      nixosConfigurations = lib.listToAttrs (
+        map (name: {
+          inherit name;
+          value = mkHost {
+            inherit name;
+          };
+        }) hostConfigs
+      );
 
       formatter.${system} = pkgs.nixfmt-tree;
     };

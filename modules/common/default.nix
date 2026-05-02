@@ -1,3 +1,5 @@
+{ inputs, config, ... }:
+
 {
   imports = [
     ./system.nix

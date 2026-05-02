@@ -4,6 +4,10 @@
   home.username = "dennis";
   home.homeDirectory = "/home/dennis";
 
+  imports = [
+    ../../modules/features/home.nix
+  ];
+
   programs.home-manager.enable = true;
 
   programs.firefox = {

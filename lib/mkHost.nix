@@ -5,8 +5,7 @@
 }:
 
 {
-  hostname,
-  extraModules ? [ ],
+  name,
 }:
 
 nixpkgs.lib.nixosSystem {
@@ -23,8 +22,13 @@ nixpkgs.lib.nixosSystem {
       ];
     }
 
+    # define all feature options
+    ../modules/features/options.nix
+
     ../modules/common
-    ({ networking.hostName = hostname; })
-  ]
-  ++ extraModules;
+    ../modules/features/nixos.nix
+    ({ networking.hostName = name; })
+
+    ../hosts/${name}/default.nix
+  ];
 }
