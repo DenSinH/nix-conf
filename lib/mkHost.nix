@@ -17,6 +17,12 @@ nixpkgs.lib.nixosSystem {
   };
 
   modules = [
+    {
+      nixpkgs.overlays = [
+        inputs.nur.overlays.default
+      ];
+    }
+
     ../modules/common
     ({ networking.hostName = hostname; })
   ]

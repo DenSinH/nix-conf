@@ -6,7 +6,26 @@
 
   programs.home-manager.enable = true;
 
-  programs.firefox.enable = true;
+  programs.firefox = {
+    enable = true;
+
+    profiles.default = {
+      isDefault = true;
+      name = "Dennis";
+
+      settings = {
+        "extensions.autoDisableScopes" = 0;
+        "extensions.enabledScopes" = 15;
+      };
+
+      # search addons here:
+      # https://nur.nix-community.org/repos/rycee/
+      extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
+        ublock-origin
+        bitwarden
+      ];
+    };
+  };
 
   programs.git = {
     enable = true;
