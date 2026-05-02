@@ -5,7 +5,7 @@
   home.homeDirectory = "/home/dennis";
 
   programs.home-manager.enable = true;
-  
+
   programs.firefox.enable = true;
 
   programs.git = {

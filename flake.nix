@@ -19,6 +19,7 @@
     }:
     let
       system = "x86_64-linux";
+      pkgs = import nixpkgs { inherit system; };
       mkHost = import ./lib/mkHost.nix {
         inherit nixpkgs system inputs;
       };
@@ -36,5 +37,7 @@
           ];
         };
       };
+
+      formatter.${system} = pkgs.nixfmt-tree;
     };
 }
