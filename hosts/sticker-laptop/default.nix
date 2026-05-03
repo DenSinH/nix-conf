@@ -7,7 +7,10 @@
   ];
 
   features = {
-    dev.enable = true;
+    dev = {
+      enable = true;
+      docker = true;
+    };
     gaming.enable = true;
     office.enable = true;
   };
