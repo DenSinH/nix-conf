@@ -5,6 +5,5 @@ let
 
 in
 importFeatures {
-  dir = ./.;
   kind = "options";
 }
