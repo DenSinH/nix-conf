@@ -2,8 +2,9 @@
 
 {
   imports = [
+    ./gnome.nix
+    ./home-manager.nix
     ./system.nix
     ./users.nix
-    ./home-manager.nix
   ];
 }

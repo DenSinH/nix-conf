@@ -3,7 +3,6 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../modules/desktop/gnome.nix
     ../../modules/laptop/input.nix
   ];
 
