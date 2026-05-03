@@ -1,12 +1,13 @@
-{ config, pkgs, ... }:
+{ config, pkgs, ... }@attrs:
 
+let
+  importFeatures = import ../../modules/features/import.nix attrs;
+in
 {
   home.username = "dennis";
   home.homeDirectory = "/home/dennis";
 
-  imports = [
-    ../../modules/features/home.nix
-  ];
+  imports = importFeatures { kind = "home"; };
 
   programs.home-manager.enable = true;
 

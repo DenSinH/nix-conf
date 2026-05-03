@@ -4,6 +4,11 @@
   inputs,
 }:
 
+let
+  importFeatures = import ../modules/features/import.nix {
+    lib = nixpkgs.lib;
+  };
+in
 {
   name,
 }:
@@ -22,13 +27,15 @@ nixpkgs.lib.nixosSystem {
       ];
     }
 
-    # define all feature options
-    ../modules/features/options.nix
-
     ../modules/common
-    ../modules/features/nixos.nix
     ({ networking.hostName = name; })
 
     ../hosts/${name}/default.nix
-  ];
+  ]
+  ++ (importFeatures {
+    kind = "nixos";
+  })
+  ++ (importFeatures {
+    kind = "options";
+  });
 }
