@@ -17,6 +17,8 @@
       ++ lib.optional (features.${featureName}.powershell) powershell;
 
     # libreoffice config
+    # if you need to update this, find the file at 
+    # ~/.config/libreoffice/4/user/registrymodifications.xcu
     xdg.configFile."libreoffice/4/user/registrymodifications.xcu".source = ./libreoffice-config.xcu;
 
     programs.thunderbird = {
