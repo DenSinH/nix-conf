@@ -12,6 +12,9 @@
       docker = true;
     };
     gaming.enable = true;
-    office.enable = true;
+    office = {
+      enable = true;
+      powershell = true;
+    };
   };
 }
