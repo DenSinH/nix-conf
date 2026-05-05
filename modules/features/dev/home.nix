@@ -25,6 +25,7 @@
         extensions = with pkgs.vscode-extensions; [
           bbenoist.nix
           ms-python.python
+          redhat.vscode-xml
         ];
 
         userSettings = {
