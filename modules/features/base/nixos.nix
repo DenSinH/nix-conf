@@ -35,4 +35,6 @@
     gvfs # network mounts, trash, etc.
     gnome-keyring # secrets, ssh agent, etc.
   ];
+
+  services.tailscale.enable = true;
 }

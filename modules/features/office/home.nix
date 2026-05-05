@@ -16,9 +16,8 @@
       ]
       ++ lib.optional (features.${featureName}.powershell) powershell;
 
-      # libreoffice config
-      xdg.configFile."libreoffice/4/user/registrymodifications.xcu".source =
-        ./libreoffice-config.xcu;
+    # libreoffice config
+    xdg.configFile."libreoffice/4/user/registrymodifications.xcu".source = ./libreoffice-config.xcu;
 
     programs.thunderbird = {
       enable = true;
