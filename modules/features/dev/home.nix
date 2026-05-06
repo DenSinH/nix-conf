@@ -15,6 +15,7 @@
         user.email = "git@dennishilhorst.nl";
         init.defaultBranch = "main";
         push.autoSetupRemote = true;
+        core.editor = "code --wait";
       };
     };
 
@@ -26,10 +27,18 @@
         extensions =
           with pkgs.vscode-extensions;
           [
+            # programming languages
             bbenoist.nix
+            jnoortheen.nix-ide
             ms-python.python
+            # data files
             redhat.vscode-xml
+            mechatroner.rainbow-csv
+            # general (git, remote dev, ...)
             eamodio.gitlens
+            mhutchie.git-graph
+            ms-vscode-remote.remote-ssh
+            gruntfuggly.todo-tree
           ]
           ++ lib.optionals features.${featureName}.docker [
             # useful docker extensions
@@ -40,6 +49,9 @@
         userSettings = {
           "files.autoSave" = "afterDelay";
           "files.autoSaveDelay" = 500;
+          "files.associations" = {
+            "*.nix" = "nix";
+          };
         };
 
         keybindings = [
