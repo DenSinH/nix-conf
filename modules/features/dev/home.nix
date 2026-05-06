@@ -51,6 +51,7 @@
           "files.autoSaveDelay" = 500;
           "files.associations" = {
             "*.nix" = "nix";
+            "*.xcu" = "xml";
           };
         };
 

@@ -19,6 +19,8 @@
     # libreoffice config
     # if you need to update this, find the file at
     # ~/.config/libreoffice/4/user/registrymodifications.xcu
+    # from the repo root, run
+    # cat ~/.config/libreoffice/4/user/registrymodifications.xcu > ./modules/features/office/libreoffice-config.xcu
     xdg.configFile."libreoffice/4/user/registrymodifications.xcu".source = ./libreoffice-config.xcu;
 
     programs.thunderbird = {
