@@ -93,5 +93,33 @@
     "org/gnome/gnome-session" = {
       logout-prompt = false;
     };
+
+    # find app names with
+    # ls /run/current-system/sw/share/applications
+    # or by looking for the shortcut name with
+    # grep -Ril "Shortcut Name" /run/current-system/sw/share/applications/
+    # or by going to
+    # org/gnome/shell/app-picker-layout
+    # in the dconf editor
+    "org/gnome/desktop/app-folders" = {
+      folder-children = [ "System" ];
+    };
+
+    "org/gnome/desktop/app-folders/folders/System" = {
+      name = "System";
+      apps = [
+        # these apps created shortcuts by default
+        # most of these, I will likely never use, but I just
+        # wanted to group them and hide them away somewhere
+        "cups.desktop" # Manage Printing
+        "htop.desktop"
+        "ca.desrt.dconf-editor.desktop"
+        "xterm.desktop"
+        "org.gnome.FileRoller.desktop"
+        "org.gnome.eog.desktop"
+        "org.gnome.Extensions.desktop"
+        "nixos-manual.desktop"
+      ];
+    };
   };
 }
