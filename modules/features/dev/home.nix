@@ -20,18 +20,36 @@
 
     programs.vscode = {
       enable = true;
+      package = pkgs.vscode;
 
       profiles.default = {
-        extensions = with pkgs.vscode-extensions; [
-          bbenoist.nix
-          ms-python.python
-          redhat.vscode-xml
-        ];
+        extensions =
+          with pkgs.vscode-extensions;
+          [
+            bbenoist.nix
+            ms-python.python
+            redhat.vscode-xml
+            eamodio.gitlens
+          ]
+          ++ lib.optionals features.${featureName}.docker [
+            # useful docker extensions
+            ms-azuretools.vscode-docker
+            ms-vscode-remote.remote-containers
+          ];
 
         userSettings = {
           "files.autoSave" = "afterDelay";
           "files.autoSaveDelay" = 500;
         };
+
+        keybindings = [
+          {
+            # Ctrl + D for copy line below (similar to PyCharm)
+            key = "ctrl+d";
+            command = "editor.action.copyLinesDownAction";
+            when = "editorTextFocus";
+          }
+        ];
       };
     };
 
