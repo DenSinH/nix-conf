@@ -96,6 +96,11 @@
     "org/gnome/gnome-session" = {
       logout-prompt = false;
     };
+    # keybinds
+    "org/gnome/desktop/wm/keybindings" = {
+      switch-to-workspace-left = [ ];
+      switch-to-workspace-right = [ ];
+    };
 
     # find app names with
     # ls /run/current-system/sw/share/applications
