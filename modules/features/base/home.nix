@@ -96,6 +96,9 @@
     "org/gnome/gnome-session" = {
       logout-prompt = false;
     };
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+    };
     # keybinds
     "org/gnome/desktop/wm/keybindings" = {
       switch-to-workspace-left = [ ];
