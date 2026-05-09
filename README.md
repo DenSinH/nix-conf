@@ -13,6 +13,7 @@ NixOS:
     nano
     git
     wget
+    vscode
   ];
   ```
 - Do a `nixos-rebuild switch` in order to apply the configuration.
