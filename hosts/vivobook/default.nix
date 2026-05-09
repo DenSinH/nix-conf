@@ -3,6 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./home.nix
     ../../modules/laptop/input.nix
     ./fingerprint-elan-0c90.nix
   ];
