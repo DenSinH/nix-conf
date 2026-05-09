@@ -36,5 +36,10 @@
     gnome-keyring # secrets, ssh agent, etc.
   ];
 
+  environment.variables = {
+    MOZ_ENABLE_WAYLAND = "1";
+    MOZ_USE_XINPUT2 = "1";
+  };
+
   services.tailscale.enable = true;
 }

@@ -12,6 +12,9 @@
       name = "Dennis";
 
       settings = {
+        "gfx.webrender.all" = true;
+        "layers.acceleration.force-enabled" = true;
+        "media.ffmpeg.vaapi.enabled" = true;
         "extensions.autoDisableScopes" = 0;
         "extensions.enabledScopes" = 15;
       };
