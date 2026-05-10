@@ -37,7 +37,7 @@
   ];
 
   environment.variables = {
-    MOZ_ENABLE_WAYLAND = "0";
+    MOZ_ENABLE_WAYLAND = "1";
     MOZ_USE_XINPUT2 = "1";
   };
 
