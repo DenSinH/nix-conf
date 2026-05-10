@@ -6,7 +6,8 @@
     ./home.nix
     ../../modules/laptop/input.nix
     ../../modules/laptop/power.nix
-    ./fingerprint-elan-0c90.nix
+    # not working, sadly...
+    # ./fingerprint-elan-0c90.nix
   ];
 
   # see
