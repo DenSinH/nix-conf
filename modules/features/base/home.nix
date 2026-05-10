@@ -137,6 +137,7 @@
         "org.gnome.Terminal.desktop"
       ];
       enabled-extensions = [
+        # app indicators (needed for tailscale)
         "appindicatorsupport@rgcjonas.gmail.com"
       ];
     };
