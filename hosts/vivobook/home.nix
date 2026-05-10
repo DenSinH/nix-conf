@@ -1,6 +1,9 @@
 {
-  pkgs, config, lib, ...
-}: 
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 
 {
   # nvidia settings in System folder in gnome app picker

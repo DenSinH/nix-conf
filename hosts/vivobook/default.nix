@@ -44,6 +44,7 @@
     dev = {
       enable = true;
       docker = true;
+      rdp = true;
     };
     gaming.enable = true;
     office = {

@@ -32,7 +32,7 @@
     package = pkgs.fprintd.override {
       libfprint = pkgs.libfprint;
     };
-    
+
     tod = {
       enable = true;
       driver = pkgs.libfprint-2-tod1-elan;

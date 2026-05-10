@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  config,
   ...
 }:
 
@@ -24,7 +25,7 @@
       # https://nur.nix-community.org/repos/rycee/
       extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
         ublock-origin
-        
+
         (bitwarden.overrideAttrs (old: rec {
           # needs to work with currently installed version of VaultWarden
           version = "2025.12.1";
@@ -33,7 +34,7 @@
             # find your version url at
             # https://addons.mozilla.org/en-US/firefox/addon/bitwarden-password-manager/versions/
             url = "https://addons.mozilla.org/firefox/downloads/file/4664623/bitwarden_password_manager-${version}.xpi";
-            
+
             # fill this in using nix-prefetch-url
             sha256 = "sha256-p6Ej7uTkD92K98DGckNzHdzDeuFJjPKCiZX0kFYAxR8=";
           };
@@ -91,11 +92,37 @@
           default_area = "navbar";
           installation_mode = "force_installed";
           private_browsing = true;
-          
+
           # The version should be pinned
           updates_disabled = true;
         };
       };
+    };
+  };
+
+  home.packages = [
+    pkgs.tailscale-systray
+  ];
+
+  systemd.user.services.tailscale-systray = {
+    Unit = {
+      Description = "Tailscale Systray";
+      After = [ "tailscale.service" ];
+      Wants = [ "tailscale.service" ];
+    };
+
+    Service = {
+      Type = "simple";
+
+      ExecStartPre = "${pkgs.tailscale}/bin/tailscale set --operator=${config.home.username}";
+      ExecStart = "${pkgs.tailscale-systray}/bin/tailscale-systray";
+
+      Restart = "on-failure";
+      RestartSec = 2;
+    };
+
+    Install = {
+      WantedBy = [ "default.target" ];
     };
   };
 
@@ -108,6 +135,9 @@
         "org.gnome.Nautilus.desktop"
         "code.desktop"
         "org.gnome.Terminal.desktop"
+      ];
+      enabled-extensions = [
+        "appindicatorsupport@rgcjonas.gmail.com"
       ];
     };
     "org/gnome/gnome-session" = {
