@@ -36,6 +36,11 @@
     gnome-keyring # secrets, ssh agent, etc.
   ];
 
+  programs.nautilus-open-any-terminal = {
+    enable = true;
+    terminal = "gnome-terminal";
+  };
+
   environment.variables = {
     MOZ_ENABLE_WAYLAND = "1";
     MOZ_USE_XINPUT2 = "1";
