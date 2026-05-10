@@ -151,6 +151,15 @@
       switch-to-workspace-left = [ ];
       switch-to-workspace-right = [ ];
     };
+    # enable minimize / maximize buttons
+    "org/gnome/desktop/wm/preferences" = {
+      button-layout = "appmenu:minimize,maximize,close";
+    };
+    # auto trash after 30 days
+    "org/gnome/desktop/privacy" = {
+      remove-old-trash-files = true;
+      trash-auto-delete-age = 30;
+    };
 
     # find app names with
     # ls /run/current-system/sw/share/applications
