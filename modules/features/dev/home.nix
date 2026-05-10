@@ -73,7 +73,9 @@
           wget
           nano
           nixfmt
-          jetbrains.pycharm
+          # latest version of pycharm is quite old,
+          # manually installing IDEs from the toolbox seems easier
+          jetbrains-toolbox
           python313
           uv
         ];
