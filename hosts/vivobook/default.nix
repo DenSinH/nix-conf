@@ -37,6 +37,8 @@
     NIXOS_OZONE_WL = "1";
   };
 
+  powerManagement.cpuFreqGovernor = "performance";
+
   features = {
     dev = {
       enable = true;
