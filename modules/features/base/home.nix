@@ -100,10 +100,6 @@
     };
   };
 
-  home.packages = [
-    pkgs.tailscale-systray
-  ];
-
   systemd.user.services.tailscale-systray = {
     Unit = {
       Description = "Tailscale Systray";
@@ -114,8 +110,8 @@
     Service = {
       Type = "simple";
 
-      ExecStartPre = "${pkgs.tailscale}/bin/tailscale set --operator=${config.home.username}";
-      ExecStart = "${pkgs.tailscale-systray}/bin/tailscale-systray";
+      ExecStartPre = "${pkgs.tailscale}/bin/tailscale systray set --operator=${config.home.username}";
+      ExecStart = "${pkgs.tailscale}/bin/tailscale systray";
 
       Restart = "on-failure";
       RestartSec = 2;

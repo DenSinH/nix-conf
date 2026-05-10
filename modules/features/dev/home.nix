@@ -82,6 +82,11 @@
         home.packages = with pkgs; [
           remmina
         ];
+
+        home.file.".config/autostart/remmina-applet.desktop".text = ''
+          [Desktop Entry]
+          Hidden=true
+        '';
       })
     ]
   );
