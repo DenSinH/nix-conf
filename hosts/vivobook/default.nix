@@ -5,6 +5,7 @@
     ./hardware-configuration.nix
     ./home.nix
     ../../modules/laptop/input.nix
+    ../../modules/laptop/power.nix
     ./fingerprint-elan-0c90.nix
   ];
 

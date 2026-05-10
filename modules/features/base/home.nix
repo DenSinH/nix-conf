@@ -100,6 +100,7 @@
     };
   };
 
+  # Tailscale systemtray service
   systemd.user.services.tailscale-systray = {
     Unit = {
       Description = "Tailscale Systray";
