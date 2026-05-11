@@ -34,6 +34,10 @@
     dconf-editor # dconf settings
     gvfs # network mounts, trash, etc.
     gnome-keyring # secrets, ssh agent, etc.
+    # for firefox
+    ffmpeg-full
+    libva
+    libva-utils
   ];
 
   programs.nautilus-open-any-terminal = {

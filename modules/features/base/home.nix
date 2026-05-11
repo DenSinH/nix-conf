@@ -19,6 +19,7 @@
         "media.ffmpeg.vaapi.enabled" = true;
         "extensions.autoDisableScopes" = 0;
         "extensions.enabledScopes" = 15;
+        "toolkit.telemetry.enabled" = false;
       };
 
       # search addons here:
@@ -74,6 +75,14 @@
     # see also:
     # https://hugosum.com/blog/customizing-firefox-with-nix-and-home-manager#enable-firefox-extensions-with-policiesjson
     policies = {
+      DisableTelemetry = true;
+      DisableFirefoxStudies = true;
+      EnableTrackingProtection = {
+        Value= true;
+        Locked = true;
+        Cryptomining = true;
+        Fingerprinting = true;
+      };
       Extensions = {
         Locked = [
           # enable both extensions
