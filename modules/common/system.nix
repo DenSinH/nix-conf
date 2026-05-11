@@ -2,10 +2,17 @@
 
 {
   # Bootloader
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.systemd-boot.configurationLimit = 10;
-  boot.loader.efi.canTouchEfiVariables = true;
-
+  boot = {
+    loader = {
+      efi.canTouchEfiVariables = true;
+      systemd-boot = {
+        enable = true;
+        configurationLimit = 10;
+      };
+    };
+    tmp.cleanOnBoot = true;
+  };
+  
   networking.networkmanager.enable = true;
 
   # Locale
@@ -49,6 +56,11 @@
   environment.systemPackages = with pkgs; [
     htop
   ];
+
+  # Avoid systemd services hanging on shutdown
+  systemd.settings.Manager = {
+    DefaultTimeoutStopSec = "10s";
+  };
 
   system.stateVersion = "25.11";
 }
