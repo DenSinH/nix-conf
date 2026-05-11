@@ -158,6 +158,12 @@
       remove-old-trash-files = true;
       trash-auto-delete-age = 30;
     };
+    # background
+    "org/gnome/desktop/background" = {
+      picture-uri = "file://${./background.png}";
+      picture-uri-dark = "file://${./background.png}";
+      picture-options = "zoom";
+    };
 
     # find app names with
     # ls /run/current-system/sw/share/applications
