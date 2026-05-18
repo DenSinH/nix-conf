@@ -23,7 +23,6 @@
     # cat ~/.config/libreoffice/4/user/registrymodifications.xcu > ./modules/features/office/libreoffice-config.xcu
     xdg.configFile."libreoffice/4/user/registrymodifications.xcu" = {
       source = ./libreoffice-config.xcu;
-      onChange = "cp %F %F.bak";
     };
 
     programs.thunderbird = {

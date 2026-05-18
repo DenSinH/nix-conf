@@ -78,7 +78,7 @@
       DisableTelemetry = true;
       DisableFirefoxStudies = true;
       EnableTrackingProtection = {
-        Value= true;
+        Value = true;
         Locked = true;
         Cryptomining = true;
         Fingerprinting = true;
@@ -169,8 +169,8 @@
     };
     # background
     "org/gnome/desktop/background" = {
-      picture-uri = "file://${./background.png}";
-      picture-uri-dark = "file://${./background.png}";
+      picture-uri = "file://${./background.jpg}";
+      picture-uri-dark = "file://${./background.jpg}";
       picture-options = "zoom";
     };
 

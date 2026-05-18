@@ -55,6 +55,8 @@
                 "*.nix" = "nix";
                 "*.xcu" = "xml";
               };
+              "explorer.confirmPasteNative" = false;
+              "explorer.confirmDelete" = false;
             };
 
             keybindings = [

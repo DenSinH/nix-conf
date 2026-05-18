@@ -12,7 +12,7 @@
     };
     tmp.cleanOnBoot = true;
   };
-  
+
   networking.networkmanager.enable = true;
 
   # Locale
