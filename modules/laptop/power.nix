@@ -1,33 +1,48 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
+let
+  setPowerProfile = pkgs.writeShellScript "set-power-profile" ''
+    #!/usr/bin/env bash
+
+    for supply in /sys/class/power_supply/*; do
+      if [ -f "$supply/type" ] && [ "$(cat "$supply/type")" = "Mains" ]; then
+        if [ "$(cat "$supply/online")" = "1" ]; then
+          ${pkgs.power-profiles-daemon}/bin/powerprofilesctl set performance
+          exit 0
+        fi
+      fi
+    done
+
+    ${pkgs.power-profiles-daemon}/bin/powerprofilesctl set balanced
+  '';
+in
 {
   # automatic power management profiles
   services.power-profiles-daemon.enable = true;
 
-  # automatic power switching
+  # react to charger plug/unplug
   services.udev.extraRules = ''
-    ACTION=="change", SUBSYSTEM=="power_supply", ATTR{type}=="Mains", ATTR{online}=="1", \
-      RUN+="${pkgs.systemd}/bin/systemctl start set-power-profile-performance.service"
-
-    ACTION=="change", SUBSYSTEM=="power_supply", ATTR{type}=="Mains", ATTR{online}=="0", \
-      RUN+="${pkgs.systemd}/bin/systemctl start set-power-profile-balanced.service"
+    ACTION=="change", SUBSYSTEM=="power_supply", ATTR{type}=="Mains", \
+      RUN+="${pkgs.systemd}/bin/systemctl start set-power-profile.service"
   '';
 
-  systemd.services.set-power-profile-performance = {
-    description = "Set performance profile on AC";
+  # shared service used by both boot and udev
+  systemd.services.set-power-profile = {
+    description = "Set appropriate power profile";
+
+    wantedBy = [ "multi-user.target" ];
+
+    after = [ "power-profiles-daemon.service" ];
+    wants = [ "power-profiles-daemon.service" ];
 
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = "${pkgs.power-profiles-daemon}/bin/powerprofilesctl set performance";
-    };
-  };
-
-  systemd.services.set-power-profile-balanced = {
-    description = "Set balanced profile on battery";
-
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = "${pkgs.power-profiles-daemon}/bin/powerprofilesctl set balanced";
+      ExecStart = setPowerProfile;
     };
   };
 }
