@@ -18,7 +18,7 @@ let
       fi
     done
 
-    ${pkgs.power-profiles-daemon}/bin/powerprofilesctl set balanced
+    ${pkgs.power-profiles-daemon}/bin/powerprofilesctl set power-save
   '';
 in
 {
@@ -34,8 +34,6 @@ in
   # shared service used by both boot and udev
   systemd.services.set-power-profile = {
     description = "Set appropriate power profile";
-
-    wantedBy = [ "multi-user.target" ];
 
     after = [ "power-profiles-daemon.service" ];
     wants = [ "power-profiles-daemon.service" ];
