@@ -113,15 +113,15 @@
   systemd.user.services.tailscale-systray = {
     Unit = {
       Description = "Tailscale Systray";
-      After = [ "tailscale.service" ];
-      Wants = [ "tailscale.service" ];
+      After = [ "tailscaled.service" ];
+      Wants = [ "tailscaled.service" ];
     };
 
     Service = {
       Type = "simple";
 
-      ExecStartPre = "${pkgs.tailscale}/bin/tailscale systray set --operator=${config.home.username}";
-      ExecStart = "${pkgs.tailscale}/bin/tailscale systray";
+      # this also starts the systray service
+      ExecStart = "${pkgs.tailscale}/bin/tailscale systray set --operator=${config.home.username}";
 
       Restart = "on-failure";
       RestartSec = 2;
