@@ -6,6 +6,7 @@
     ./home.nix
     ../../modules/laptop/input.nix
     ../../modules/laptop/power.nix
+    ../../modules/laptop/bluetooth.nix
     # not working, sadly...
     # ./fingerprint-elan-0c90.nix
   ];

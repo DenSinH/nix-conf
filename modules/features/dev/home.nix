@@ -75,6 +75,7 @@
           wget
           nano
           nixfmt
+          nixd # needed for nix language server in vscode
           # latest version of pycharm is quite old,
           # manually installing IDEs from the toolbox seems easier
           jetbrains-toolbox
