@@ -105,6 +105,11 @@ in
   boot.kernelParams = [ "btusb.enable_autosuspend=0" ];
 
   # run tuning service when bluetooth adapter appears
+  # check settings (as root) with
+  # 	
+  # cat /sys/kernel/debug/bluetooth/hci0/conn_latency
+  # cat /sys/kernel/debug/bluetooth/hci0/conn_min_interval
+  # cat /sys/kernel/debug/bluetooth/hci0/conn_max_interval
   services.udev.extraRules = ''
     ACTION=="add", SUBSYSTEM=="bluetooth", KERNEL=="hci[0-9]*", \
       RUN+="${bluetoothTune}/bin/bluetooth-low-latency"
