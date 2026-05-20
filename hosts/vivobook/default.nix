@@ -29,6 +29,10 @@
     }
   ];
 
+  boot.kernel.sysctl = {
+    "vm.swappiness" = 10;
+  };
+
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia = {
     open = false;
