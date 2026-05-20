@@ -17,6 +17,18 @@
     enable32Bit = true;
   };
 
+  zramSwap = {
+    enable = true;
+    memoryPercent = 25; # Uses 25 of your RAM for compressed swap
+  };
+
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 64 * 1024; # 64 GiB in MiB
+    }
+  ];
+
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia = {
     open = false;
