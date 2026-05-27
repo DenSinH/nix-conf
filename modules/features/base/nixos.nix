@@ -1,6 +1,18 @@
 { config, pkgs, ... }:
 
 {
+  # Linux kernel version 6.12.88 seems to have issues with bluetooth
+  # See for example
+  # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1136884
+  # Get the currently configured kernel version with 
+  #
+  # nix eval --raw .#nixosConfigurations.<hostname>.config.boot.kernelPackages.kernel.version
+  #
+  # or the latest available with
+  #
+  # nix eval --raw nixpkgs#linuxPackages_latest.kernel.version
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_12;
+
   # gnome is always enabled
   services.xserver.enable = true;
 
