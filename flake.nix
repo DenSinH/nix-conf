@@ -48,5 +48,6 @@
       );
 
       formatter.${system} = pkgs.nixfmt-tree;
+      samsung-jellyfin-installer = (pkgs.callPackage ./modules/samsung-jellyfin-installer.nix { });
     };
 }

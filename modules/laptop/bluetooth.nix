@@ -106,7 +106,7 @@ in
 
   # run tuning service when bluetooth adapter appears
   # check settings (as root) with
-  # 	
+  #
   # cat /sys/kernel/debug/bluetooth/hci0/conn_latency
   # cat /sys/kernel/debug/bluetooth/hci0/conn_min_interval
   # cat /sys/kernel/debug/bluetooth/hci0/conn_max_interval
