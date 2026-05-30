@@ -18,6 +18,7 @@
     enable32Bit = true;
   };
 
+  # memory compression and swap
   zramSwap = {
     enable = true;
     memoryPercent = 25; # Uses 25 of your RAM for compressed swap
@@ -34,6 +35,7 @@
     "vm.swappiness" = 10;
   };
 
+  # NVidia drivers
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia = {
     open = false;

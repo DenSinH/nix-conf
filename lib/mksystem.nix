@@ -1,7 +1,12 @@
 {
   nixpkgs,
-  system,
+  overlays,
   inputs,
+}:
+
+name:
+{
+  system,
 }:
 
 let
@@ -9,10 +14,6 @@ let
     lib = nixpkgs.lib;
   };
 in
-{
-  name,
-}:
-
 nixpkgs.lib.nixosSystem {
   inherit system;
 
@@ -21,21 +22,22 @@ nixpkgs.lib.nixosSystem {
   };
 
   modules = [
-    {
-      nixpkgs.overlays = [
-        inputs.nur.overlays.default
-      ];
-    }
+    # add all overlays
+    { nixpkgs.overlays = overlays; }
 
+    # add common modules (gnome, default programs, ...)
     ../modules/common
-    ({ networking.hostName = name; })
 
+    # set hostname for system
+    { networking.hostName = name; }
+
+    # add host configuration
     ../hosts/${name}/default.nix
   ]
   ++ (importFeatures {
-    kind = "nixos";
+    kind = "options";
   })
   ++ (importFeatures {
-    kind = "options";
+    kind = "nixos";
   });
 }

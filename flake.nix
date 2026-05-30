@@ -26,24 +26,24 @@
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
-      lib = pkgs.lib;
-      mkHost = import ./lib/mkHost.nix {
-        inherit nixpkgs system inputs;
+      overlays = [
+        inputs.nur.overlays.default
+      ];
+
+      mkSystem = import ./lib/mksystem.nix {
+        inherit overlays nixpkgs inputs;
       };
 
+      # gather hosts
       hostDir = ./hosts;
-
       hostNames = builtins.attrNames (builtins.readDir hostDir);
-
-      hostConfigs = lib.filter (name: builtins.pathExists (hostDir + "/${name}/default.nix")) hostNames;
+      hostConfigs = pkgs.lib.filter (name: builtins.pathExists (hostDir + "/${name}/default.nix")) hostNames;
     in
     {
-      nixosConfigurations = lib.listToAttrs (
+      nixosConfigurations = pkgs.lib.listToAttrs (
         map (name: {
           inherit name;
-          value = mkHost {
-            inherit name;
-          };
+          value = mkSystem name { inherit system; };
         }) hostConfigs
       );
 
