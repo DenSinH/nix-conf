@@ -4,7 +4,7 @@
   # Linux kernel version 6.12.88 seems to have issues with bluetooth
   # See for example
   # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1136884
-  # Get the currently configured kernel version with 
+  # Get the currently configured kernel version with
   #
   # nix eval --raw .#nixosConfigurations.<hostname>.config.boot.kernelPackages.kernel.version
   #
@@ -46,6 +46,12 @@
     dconf-editor # dconf settings
     gvfs # network mounts, trash, etc.
     gnome-keyring # secrets, ssh agent, etc.
+    # video player and plugins
+    totem
+    gst_all_1.gst-plugins-base
+    gst_all_1.gst-plugins-good
+    gst_all_1.gst-plugins-bad
+    gst_all_1.gst-libav
     # for firefox
     ffmpeg-full
     libva
