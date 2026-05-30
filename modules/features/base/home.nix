@@ -109,6 +109,10 @@
     };
   };
 
+  programs.obsidian = {
+    enable = true;
+  };
+
   # Tailscale systemtray service
   systemd.user.services.tailscale-systray = {
     Unit = {
