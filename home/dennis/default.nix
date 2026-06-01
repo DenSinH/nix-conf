@@ -1,4 +1,4 @@
-{ config, pkgs, ... }@attrs:
+{ ... }@attrs:
 
 let
   importFeatures = import ../../modules/features/import.nix attrs;

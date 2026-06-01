@@ -4,7 +4,6 @@
 # for the MR that adds support for the 04f3:0c90 usb device ID (run lsusb)
 
 {
-  lib,
   pkgs,
   ...
 }:
