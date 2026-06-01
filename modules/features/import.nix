@@ -13,7 +13,7 @@ let
   # potential paths in priority order
   mkPaths = featureName: [
     (dir + "/${featureName}/${kind}.nix")
-    (dir + "/${featureName}/default.nix")
+    (dir + "/${featureName}/${kind}/default.nix")
   ];
 
   pickPath = featureName: lib.findFirst builtins.pathExists null (mkPaths featureName);

@@ -43,6 +43,9 @@ in
         environment.variables = {
           "LD_LIBRARY_PATH" = "$NIX_LD_LIBRARY_PATH";
         };
+        environment.systemPackages = with pkgs; [
+          notepad-next
+        ];
       }
       (lib.mkIf cfg.docker {
         virtualisation.docker.enable = true;
