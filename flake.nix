@@ -37,7 +37,9 @@
       # gather hosts
       hostDir = ./hosts;
       hostNames = builtins.attrNames (builtins.readDir hostDir);
-      hostConfigs = pkgs.lib.filter (name: builtins.pathExists (hostDir + "/${name}/default.nix")) hostNames;
+      hostConfigs = pkgs.lib.filter (
+        name: builtins.pathExists (hostDir + "/${name}/default.nix")
+      ) hostNames;
     in
     {
       nixosConfigurations = pkgs.lib.listToAttrs (

@@ -7,19 +7,24 @@
 let
   dir = ./.;
 
-  entries = builtins.readDir dir;
+  features = builtins.readDir dir;
+  featureDirs = lib.filterAttrs (_: type: type == "directory") features;
 
-  featureDirs = lib.filterAttrs (name: type: type == "directory") entries;
+  # potential paths in priority order
+  mkPaths = featureName: [
+    (dir + "/${featureName}/${kind}.nix")
+    (dir + "/${featureName}/default.nix")
+  ];
 
-  mkPath = featureName: dir + "/${featureName}/${kind}.nix";
+  pickPath = featureName: lib.findFirst builtins.pathExists null (mkPaths featureName);
 
   imports = lib.flatten (
     map (
       featureName:
       let
-        path = mkPath featureName;
+        path = pickPath featureName;
       in
-      lib.optionals (builtins.pathExists path) [
+      lib.optionals (path != null) [
         (
           {
             lib,
