@@ -63,6 +63,7 @@
         # most of these, I will likely never use, but I just
         # wanted to group them and hide them away somewhere
         "cups.desktop" # Manage Printing
+        "org.gnome.Totem.desktop"
         "htop.desktop"
         "ca.desrt.dconf-editor.desktop"
         "xterm.desktop"
