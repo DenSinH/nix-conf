@@ -5,6 +5,7 @@
     ./hardware-configuration.nix
     ../../modules/laptop/input.nix
     ../../modules/laptop/power.nix
+    ../../modules/mxmaster.nix
   ];
 
   features = {
