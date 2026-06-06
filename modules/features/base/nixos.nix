@@ -56,11 +56,31 @@
     ffmpeg-full
     libva
     libva-utils
+    nfs-utils
   ];
 
   programs.nautilus-open-any-terminal = {
     enable = true;
     terminal = "gnome-terminal";
+  };
+
+  # NFS configuration
+  services.rpcbind.enable = true;
+  boot.supportedFilesystems = [ "nfs" ];
+
+  fileSystems."/mnt/drive" = {
+    device = "192.168.50.20:/mnt/primary/drive";
+    fsType = "nfs";
+    options = [
+      "x-systemd.automount"
+      "noauto"
+    ];
+  };
+
+  # make firefox default pdf app
+  xdg.mime.enable = true;
+  xdg.mime.defaultApplications = {
+    "application/pdf" = "firefox.desktop";
   };
 
   environment.variables = {
