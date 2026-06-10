@@ -68,7 +68,7 @@
         "ca.desrt.dconf-editor.desktop"
         "xterm.desktop"
         "org.gnome.FileRoller.desktop"
-        "org.gnome.eog.desktop"
+        "org.gnome.gthumb.desktop"
         "org.gnome.Extensions.desktop"
         "nixos-manual.desktop"
       ];

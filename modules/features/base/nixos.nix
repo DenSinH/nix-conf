@@ -41,7 +41,7 @@
     nautilus
     gnome-terminal
     file-roller # archive support
-    eog # image viewer (previews)
+    gthumb # image viewer (previews)
     gnome-control-center # settings GUI
     dconf-editor # dconf settings
     gvfs # network mounts, trash, etc.
