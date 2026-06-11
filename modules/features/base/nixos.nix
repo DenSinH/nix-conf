@@ -46,6 +46,8 @@
     dconf-editor # dconf settings
     gvfs # network mounts, trash, etc.
     gnome-keyring # secrets, ssh agent, etc.
+    # snipping tool
+    ksnip
     # video player and plugins
     totem
     gst_all_1.gst-plugins-base
