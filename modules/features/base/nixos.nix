@@ -47,7 +47,12 @@
     gvfs # network mounts, trash, etc.
     gnome-keyring # secrets, ssh agent, etc.
     # snipping tool
-    ksnip
+    (ksnip.overrideAttrs (old: {
+      postInstall = (old.postInstall or "") + ''
+        substituteInPlace $out/share/applications/org.ksnip.ksnip.desktop \
+          --replace "/usr/bin/ksnip" "${ksnip}/bin/ksnip"
+      '';
+    }))
     # video player and plugins
     totem
     gst_all_1.gst-plugins-base

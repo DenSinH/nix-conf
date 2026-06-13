@@ -29,6 +29,17 @@
       switch-to-workspace-left = [ ];
       switch-to-workspace-right = [ ];
     };
+    # ksnip custom keybind to win + shift + s
+    "org/gnome/settings-daemon/plugins/media-keys" = {
+      custom-keybindings = [
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/ksnip/"
+      ];
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/ksnip" = {
+      name = "ksnip screenshot";
+      command = "ksnip -r -c";
+      binding = "<Shift><Super>s";
+    };
     # enable minimize / maximize buttons
     "org/gnome/desktop/wm/preferences" = {
       button-layout = "appmenu:minimize,maximize,close";
