@@ -75,6 +75,9 @@
   services.rpcbind.enable = true;
   boot.supportedFilesystems = [ "nfs" ];
 
+  # for access from nautilus
+  services.gvfs.enable = true;
+
   fileSystems."/mnt/drive" = {
     device = "192.168.50.20:/mnt/primary/drive";
     fsType = "nfs";

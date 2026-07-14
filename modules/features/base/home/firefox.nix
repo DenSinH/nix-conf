@@ -1,5 +1,7 @@
 {
   pkgs,
+  config,
+  lib,
   ...
 }:
 
@@ -7,6 +9,7 @@
   # firefox configuration
   programs.firefox = {
     enable = true;
+    configPath = "${config.xdg.configHome}/mozilla/firefox";
 
     profiles.default = {
       isDefault = true;
@@ -28,15 +31,16 @@
 
         (bitwarden.overrideAttrs (old: rec {
           # needs to work with currently installed version of VaultWarden
-          version = "2025.12.1";
+          version = "2026.5.1";
+          file_id = "4827854";
 
           src = pkgs.fetchurl {
             # find your version url at
             # https://addons.mozilla.org/en-US/firefox/addon/bitwarden-password-manager/versions/
-            url = "https://addons.mozilla.org/firefox/downloads/file/4664623/bitwarden_password_manager-${version}.xpi";
+            url = "https://addons.mozilla.org/firefox/downloads/file/${file_id}/bitwarden_password_manager-${version}.xpi";
 
             # fill this in using nix-prefetch-url
-            sha256 = "sha256-p6Ej7uTkD92K98DGckNzHdzDeuFJjPKCiZX0kFYAxR8=";
+            sha256 = "sha256-jrtHVRijMLiLTiy6CGTFyhG+05BznLhPvyVuk4yRttk=";
           };
         }))
       ];
