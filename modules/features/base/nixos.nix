@@ -11,7 +11,7 @@
   # or the latest available with
   #
   # nix eval --raw nixpkgs#linuxPackages_latest.kernel.version
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_7_0;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # gnome is always enabled
   services.xserver.enable = true;
