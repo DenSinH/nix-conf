@@ -28,21 +28,6 @@
       # https://nur.nix-community.org/repos/rycee/
       extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
         ublock-origin
-
-        (bitwarden.overrideAttrs (old: rec {
-          # needs to work with currently installed version of VaultWarden
-          version = "2026.5.1";
-          file_id = "4827854";
-
-          src = pkgs.fetchurl {
-            # find your version url at
-            # https://addons.mozilla.org/en-US/firefox/addon/bitwarden-password-manager/versions/
-            url = "https://addons.mozilla.org/firefox/downloads/file/${file_id}/bitwarden_password_manager-${version}.xpi";
-
-            # fill this in using nix-prefetch-url
-            sha256 = "sha256-jrtHVRijMLiLTiy6CGTFyhG+05BznLhPvyVuk4yRttk=";
-          };
-        }))
       ];
 
       # see https://hugosum.com/blog/customizing-firefox-with-nix-and-home-manager#enable-firefox-extensions-with-policiesjson
@@ -104,9 +89,6 @@
           default_area = "navbar";
           installation_mode = "force_installed";
           private_browsing = true;
-
-          # The version should be pinned
-          updates_disabled = true;
         };
       };
     };

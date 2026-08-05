@@ -79,7 +79,7 @@
   services.gvfs.enable = true;
 
   fileSystems."/mnt/drive" = {
-    device = "192.168.50.20:/mnt/primary/drive";
+    device = "192.168.50.20:/tank/drive";
     fsType = "nfs";
     options = [
       "x-systemd.automount"
