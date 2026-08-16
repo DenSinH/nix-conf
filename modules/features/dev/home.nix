@@ -57,6 +57,7 @@
               };
               "explorer.confirmPasteNative" = false;
               "explorer.confirmDelete" = false;
+              "workbench.browser.openLocalhostLinks" = false;
             };
 
             keybindings = [

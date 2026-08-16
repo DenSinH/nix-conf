@@ -28,3 +28,11 @@ NixOS:
 - Go to the repo root.
 - Add the missing files to git, otherwise the flake does not pick it up, and run `nixos-rebuild switch --flake .#<your-host>`.
 - Your configuration should be activated with your selected features!
+
+
+## Updating a host
+
+For example for `vivobook`. Run `nix flake update`, then
+```bash
+sudo nixos-rebuild switch --flake .#vivobook
+```
