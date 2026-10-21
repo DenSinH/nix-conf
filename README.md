@@ -2,6 +2,14 @@
 
 These are my personal nixos configurations, and here are some instructions on how to use them, modify them and create new hosts.
 
+## Mounting the NAS drive
+
+In Nautilus, go to Network. Connect to
+```
+smb://192.168.50.20/drive
+```
+Enter credentials (don't try Anonymous, it will not work). Click "Remember forever. Then go to the share, press `Ctrl + D` and rename the bookmark that appeared on the left-hand navigation menu.
+
 ## Creating a new host
 
 In order to create a new host, do the following after installing 
