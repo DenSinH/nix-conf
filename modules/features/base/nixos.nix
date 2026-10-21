@@ -78,15 +78,6 @@
   # for access from nautilus
   services.gvfs.enable = true;
 
-  fileSystems."/mnt/drive" = {
-    device = "192.168.50.20:/tank/drive";
-    fsType = "nfs";
-    options = [
-      "x-systemd.automount"
-      "noauto"
-    ];
-  };
-
   # make firefox default pdf app
   xdg.mime.enable = true;
   xdg.mime.defaultApplications = {
